@@ -1,4 +1,4 @@
 a = "hello world"
-b = "Hello Mariely"
-c = "hello ariana"
+b = "hello Mariely"
+c = "hello Ariana"
 d = "hello Sebas"
