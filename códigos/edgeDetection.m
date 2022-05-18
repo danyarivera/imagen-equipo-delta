@@ -1,8 +1,23 @@
-f=imread('radiograph1.jpg');
-f=imresize(f,0.25);
-f=double(f(:,:,1));
-imshow(f,[])
+f=imread('radiograph1.jpg'); %Lee una imagen especifica de la computadora y la pasa a figure en matlab
+f=imresize(f,0.25); %El imresize cambia el tamaño de la imagen, en este caso escalandola a 0.25
+f=double(f(:,:,1)); %
+imshow(f,[]) % Muestra la imagen en una escala de grises y se especifica el rango de visualización
+
 %%
+<<<<<<< HEAD
+edgex=[1,-1] %Crea un arreglo del borde x
+g1=conv2(f,edgex,'same'); %Devuelve una sección de la convolución, en este caso el centro. (Borde X)
+imshow(g1,[-10,10]); % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la conv2.
+%%
+edgey=[-1 -2 -1;0,0,0;1,2,1]/8 % Crea un areglo del borde y
+g2=conv2(f,edgey,'same'); %Devuelve una sección de la convolución, en este caso del centro (Borde y)
+imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+figure(2)
+subplot(1,2,1)
+imshow(g1,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+subplot(1,2,2)
+imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+=======
 edgex=[1,-1]
 g1=conv2(f,edgex,'same');
 imshow(g1,[-10,10]);
@@ -15,6 +30,7 @@ subplot(1,2,1) % Divide la figure(2) en cuadrículas (subgráficas)
 imshow(g1,[-10,10]) % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
 subplot(1,2,2) % Divide la figure(2) en cuadrículas (subgráficas)
 imshow(g2,[-10,10]) % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+>>>>>>> 938709d7bbe4433d2671914f2d58596cce3db7f8
 %%
 figure(3)
 subplot(1,1,1)
