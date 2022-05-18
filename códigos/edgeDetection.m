@@ -4,7 +4,6 @@ f=double(f(:,:,1)); %
 imshow(f,[]) % Muestra la imagen en una escala de grises y se especifica el rango de visualización
 
 %%
-<<<<<<< HEAD
 edgex=[1,-1] %Crea un arreglo del borde x
 g1=conv2(f,edgex,'same'); %Devuelve una sección de la convolución, en este caso el centro. (Borde X)
 imshow(g1,[-10,10]); % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la conv2.
