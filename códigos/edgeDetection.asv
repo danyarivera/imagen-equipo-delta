@@ -6,9 +6,9 @@ imshow(f,[])
 edgex=[1,-1]
 g1=conv2(f,edgex,'same');
 imshow(g1,[-10,10]);
-%% 
-edgey=[-1 -2 -1;0,0,0;1,2,1]/8 
-g2=conv2(f,edgey,'same'); 
+%% Esta sección del código
+edgey=[-1 -2 -1;0,0,0;1,2,1]/8  % Crea un areglodel borde x 
+g2=conv2(f,edgey,'same');
 imshow(g2,[-10,10])
 figure(2)
 subplot(1,2,1)
@@ -19,11 +19,11 @@ imshow(g2,[-10,10])
 figure(3)
 subplot(1,1,1)
 %%
-edgex=[1,0,-1;2,0,-2;1,0,-1]/8  % Crea un areglo del borde x 
-gx=conv2(f,edgex,'same'); %Devuelve una sección de la convolución, en este caso del centro (Borde x)
-gy=conv2(f,edgey,'same');%Devuelve una sección de la convolución, en este caso del centro (Borde y)
-mag=abs(gx)+abs(gy); %Suma de los absolutos para obtener su magnitud
-imshow(mag,[]); %Muestra la imagen en escala de grises
+edgex=[1,0,-1;2,0,-2;1,0,-1]/8
+gx=conv2(f,edgex,'same');
+gy=conv2(f,edgey,'same');
+mag=abs(gx)+abs(gy);
+imshow(mag,[]);
 %%
 noisemask = [-1, 0 1];
 noiseimage = conv2(f,noisemask,'same');
