@@ -6,7 +6,7 @@ imshow(f,[])
 edgex=[1,-1]
 g1=conv2(f,edgex,'same');
 imshow(g1,[-10,10]);
-%%
+%% Esta sección del código
 edgey=[-1 -2 -1;0,0,0;1,2,1]/8
 g2=conv2(f,edgey,'same');
 imshow(g2,[-10,10])
