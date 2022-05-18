@@ -28,7 +28,7 @@ imshow(mag,[]); %Muestra la imagen en escala de grises
 noisemask = [-1, 0 1] % Crea un arreglo para reducir el ruido de la imagen 
 noiseimage = conv2(f,noisemask,'same'); % Devuelve la parte central de la convolución, la misma medida que f.
 noisevariance = mean2(noiseimage.^2); % Calcula la varianza mediante la media de la convolución.
-noisestd = sqrt(noisevariance/2); % Calcula la derivación estandar sacanso la raiz cuadrada
+noisestd = sqrt(noisevariance/2); % Calcula la derivación estandar sacando la raiz cuadrada
 edgedetection1 = mag > noisestd; % Selecciona los bordes fuertes, pero no asegura continuidad
 edgedetection2 = mag > 2*noisestd; % Selecciona los bordes fuertes, pero no asegura continuidad
 subplot(1,2,1) % Subimagenes
