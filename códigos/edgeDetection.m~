@@ -29,6 +29,7 @@ subplot(1,2,1) % Divide la figure(2) en cuadrículas (subgráficas)
 imshow(g1,[-10,10]) % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
 subplot(1,2,2) % Divide la figure(2) en cuadrículas (subgráficas)
 imshow(g2,[-10,10]) % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+>>>>>>> 938709d7bbe4433d2671914f2d58596cce3db7f8
 %%
 figure(3)
 subplot(1,1,1)
