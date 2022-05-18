@@ -1,7 +1,7 @@
 %% Mathematical Morphology
 
 % código clase 18/05/22. 
-f=imread('radiograph1.jpg');
+f=imread('radiograph2.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
 f=imresize(f,0.25);
