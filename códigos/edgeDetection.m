@@ -7,14 +7,14 @@ edgex=[1,-1]
 g1=conv2(f,edgex,'same');
 imshow(g1,[-10,10]);
 %% 
-edgey=[-1 -2 -1;0,0,0;1,2,1]/8 
-g2=conv2(f,edgey,'same'); 
-imshow(g2,[-10,10])
-figure(2)
-subplot(1,2,1)
-imshow(g1,[-10,10])
-subplot(1,2,2)
-imshow(g2,[-10,10])
+edgey=[-1 -2 -1;0,0,0;1,2,1]/8 % Crea un arreglo del borde Y
+g2=conv2(f,edgey,'same'); % Devuelve una sección de la convolución, en este caso el centro. (Borde Y)
+imshow(g2,[-10,10]) % Muestra una imagen en scala de grises con rango de visualización de -10 a 10 de la convolución central.
+figure(2) % Inicializa otra figura para que no se borre la anterior
+subplot(1,2,1) % Divide la figure(2) en cuadrículas (subgráficas)
+imshow(g1,[-10,10]) % Muestra una imagen en scala de grises con rango de visualización de -10 a 10 de la convolución central.
+subplot(1,2,2) % Divide la figure(2) en cuadrículas (subgráficas)
+imshow(g2,[-10,10]) % Muestra una imagen en scala de grises con rango de visualización de -10 a 10 de la convolución central.
 %%
 figure(3)
 subplot(1,1,1)
