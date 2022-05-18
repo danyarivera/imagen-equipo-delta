@@ -1,6 +1,6 @@
 %% Mathematical Morphology
 
-% código 18/05/22
+% código clase 18/05/22 
 f=imread('radiograph1.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
