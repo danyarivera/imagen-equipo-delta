@@ -25,20 +25,20 @@ gy=conv2(f,edgey,'same');%Devuelve una sección de la convolución, en este caso
 mag=abs(gx)+abs(gy); %Suma de los absolutos para obtener su magnitud
 imshow(mag,[]); %Muestra la imagen en escala de grises
 %%
-noisemask = [-1, 0 1];
-noiseimage = conv2(f,noisemask,'same');
-noisevariance = mean2(noiseimage.^2);
-noisestd = sqrt(noisevariance/2);
-edgedetection1 = mag > noisestd;
-edgedetection2 = mag > 2*noisestd;
-subplot(1,2,1)
-imshow(edgedetection1,[]);
-subplot(1,2,2)
-imshow(edgedetection2,[]);
-figure(4)
-subplot(1,1,1)
-angle=atan2(gy,gx);
-imshow(angle,[]);
+noisemask = [-1, 0 1] % Crea un arreglo para reducir el ruido de la imagen 
+noiseimage = conv2(f,noisemask,'same'); % Devuelve la parte central de la convolución, la misma medida que f.
+noisevariance = mean2(noiseimage.^2); % Calcula la varianza mediante la media de la convolución.
+noisestd = sqrt(noisevariance/2); % Calcula la derivación estandar sacanso la raiz cuadrada
+edgedetection1 = mag > noisestd; % Selecciona los bordes fuertes, pero no asegura continuidad
+edgedetection2 = mag > 2*noisestd; % Selecciona los bordes fuertes, pero no asegura continuidad
+subplot(1,2,1) % Subimagenes
+imshow(edgedetection1,[]); % Muestra imagen en escala de grises
+subplot(1,2,2) % Subimagenes
+imshow(edgedetection2,[]); % Muestra imagen en escala de grises
+figure(4) %Nueva figura
+subplot(1,1,1) % Subimagenes
+angle=atan2(gy,gx); % Devuelve la tangente inversa de ls convoluciones
+imshow(angle,[]); % Muestra imagen en escala de grises
 %%
-edgcany=edge(f,'Canny');
-imshow(edgcany,[]);
+edgcany=edge(f,'Canny'); % Detecta los bordes mediante metodo de Prewitt(Canny)
+imshow(edgcany,[]); %Muestra una imagen en scala de grises 
