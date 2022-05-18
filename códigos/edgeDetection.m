@@ -9,14 +9,14 @@ edgex=[1,-1] %Crea un arreglo del borde x
 g1=conv2(f,edgex,'same'); %Devuelve una sección de la convolución, en este caso el centro. (Borde X)
 imshow(g1,[-10,10]); % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la conv2.
 %%
-edgey=[-1 -2 -1;0,0,0;1,2,1]/8
-g2=conv2(f,edgey,'same');
-imshow(g2,[-10,10])
+edgey=[-1 -2 -1;0,0,0;1,2,1]/8 % Crea un areglo del borde y
+g2=conv2(f,edgey,'same'); %Devuelve una sección de la convolución, en este caso del centro (Borde y)
+imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
 figure(2)
 subplot(1,2,1)
-imshow(g1,[-10,10])
+imshow(g1,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
 subplot(1,2,2)
-imshow(g2,[-10,10])
+imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
 =======
 edgex=[1,-1]
 g1=conv2(f,edgex,'same');
