@@ -2,8 +2,8 @@
 % codigo clase 18/05/22.
 
 %Lee una imagen especifica de la computadora y la pasa a figure en matlab.
-%Convierte la variable a doble precisi�n y la funcion imresize cambia el
-%tama�o de la imagen, en este caso escalandola a 0.25, despues se
+%Convierte la variable a doble precisión y la funcion imresize cambia el
+%tamaño de la imagen, en este caso escalandola a 0.25, despues se
 %inicializa la figura mostrando una imagen en una escala de grises y se
 %especifica el rango de visualizacion 
 f=imread('radiograph2.jpg'); 
@@ -30,7 +30,7 @@ title('Dilatation')
 %puede ser en 2D como en este caso. Con la funcion imerode erosiona la
 %imagen en una escala de grises. En este caso se hace un subplot para que
 %muestre la imagen erosionada junto con la imagen de la funcion imopen 
-se = strel('disk',10); %ten�a 5
+se = strel('disk',10); %tenía 5
 BW3 = imerode(f,se);
 %imshow(BW3), title('Eroded')
 % Use different disk size
@@ -43,9 +43,9 @@ subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
 %puede ser en 2D como en este caso. La funcion imopen consiste en una
-%erosi�n seguida de una dilataci�n utilizando SE, despues se muestra la
+%erosión seguida de una dilatación utilizando SE, despues se muestra la
 %imagen erosionada y dilatada con un titulo.
-se = strel('disk',12); %ten�a 7
+se = strel('disk',12); %tenía 7
 BW2 = imopen(f,se);
 imshow(BW2)
 title('Opening')
@@ -56,11 +56,12 @@ title('Opening')
 %puede ser en 2D como en este caso. La funcion imclose es lo contrario de
 %imopen ya que consiste en primero la dilatacion seguida de una erosion
 %utilizando SE, despues se  muestra la imagen dilatada y erosionada con un titulo.
-se = strel('disk',15); %ten�a 7 
+se = strel('disk',15); %tenía 7 
 BW2 = imclose(f,se);
 imshow(BW2)
 title('Closing')
 % Use different disk size
+
 %% Gradient SEBAS
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
@@ -68,8 +69,8 @@ title('Closing')
 se = strel('disk',1);
 BW1 = imdilate(f,se) - imerode(f,se);
 imshow(BW1), title('Gradient')
-% Use different disk size
 
+% Use different disk size
 %% Preprocess the Image The Rice Matlab Example
 % Read an image into the workspace.
 
@@ -78,15 +79,10 @@ imshow(BW1), title('Gradient')
 I = imread('pout.tif');
 imshow(I)
 title('Pout image')
-%% MARIELY/SEBAS
-% The background illumination is brighter in the center of the image than at 
-% the bottom. Preprocess the image to make the background illumination more uniform.
-% 
-% As a first step, remove all of the foreground (rice grains) using morphological 
-% opening. The opening operation removes small objects that cannot completely 
-% contain the structuring element. Define a disk-shaped structuring element with 
-% a radius of 15, which fits entirely inside a single grain of rice.
 
+% El preprocesameinto de la imagen hace el brillo de fondo más uniforme.
+% 
+%Define la forma del disco con un radio de 15, que cabe completamente dentro de un solo grano de arroz.
 se = strel('disk',15)
 %% MARIELY/SEBAS
 
