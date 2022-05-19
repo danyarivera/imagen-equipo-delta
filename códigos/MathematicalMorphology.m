@@ -134,15 +134,13 @@ title('Binary image')
 % Use different size of the structural element
 
 %% Skeletonize 2-D Grayscale Image
-% Read a 2-D grayscale image into the workspace. Display the image. Objects 
-% of interest are dark threads against a light background.
 
 %Lee una imagen especifica de la computadora y la pasa a figure en matlab.
 %Para el caso de Skeletonize se utiliza una imagen en una escala de grises
 %donde el background es negro y el foreground es blanco.
 I = imread('Skeletonize.jpg');
 imshow(I)
-%% 
+%% Mariely/sebas
 % Skeletonization requires a binary image in which foreground pixels are |1| 
 % (white) and the background is |0| (black). To make the original image suitable 
 % for skeletonization, take the complement of the image so that the objects are 
