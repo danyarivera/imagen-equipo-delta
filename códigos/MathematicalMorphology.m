@@ -64,8 +64,6 @@ title('Closing')
 % Use different disk size
 %HEAD
 
-%% Gradient SEBASM
-
 %% Gradient SEBAS
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
@@ -124,13 +122,10 @@ title('Foto ajustada')
 % 
 % I2 = imtophat(I,strel('disk',15));|
 %% 
-% Create a binary version of the processed image so you can use toolbox functions 
-% for analysis. Use the |imbinarize| function to convert the grayscale image into 
-% a binary image. Remove background noise from the image with the |bwareaopen| 
-% function.
 
 % Se utiliza la funcion imbinarize para convertir la figure de una escala
-% de grises a una imagen binaria. La funcion bwareaopen elimina el ruido 
+% de grises a una imagen binaria. La funcion bwareaopen elimina el ruido
+% del fondo de la imagen.
 bw = imbinarize(I3);
 bw = bwareaopen(bw,10);
 imshow(bw)
@@ -142,6 +137,9 @@ title('Binary image')
 % Read a 2-D grayscale image into the workspace. Display the image. Objects 
 % of interest are dark threads against a light background.
 
+%Lee una imagen especifica de la computadora y la pasa a figure en matlab.
+%Para el caso de Skeletonize se utiliza una imagen en una escala de grises
+%donde el background es negro y el foreground es blanco.
 I = imread('Skeletonize.jpg');
 imshow(I)
 %% 
@@ -149,6 +147,7 @@ imshow(I)
 % (white) and the background is |0| (black). To make the original image suitable 
 % for skeletonization, take the complement of the image so that the objects are 
 % light and the background is dark. Then, binarize the result.
+
 
 Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
