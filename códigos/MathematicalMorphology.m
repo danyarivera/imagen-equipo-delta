@@ -12,7 +12,7 @@ f=f/max(max(f));
 f=imresize(f,0.25);
 figure(1) 
 imshow(f,[]);
-title('Radiograph') 
+title('Radiography') 
 %% Dilatation
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
