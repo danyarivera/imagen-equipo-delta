@@ -21,6 +21,7 @@ title('Radiograph')
 %conforme subas el SE.
 se = strel('disk',8); 
 BW2 = imdilate(f,se);
+figure(2)
 imshow(BW2)
 title('Dilatation')
 % Use different disk size
@@ -36,7 +37,7 @@ BW3 = imerode(f,se);
 % Use different disk size
 %imshowpair(BW2,BW3,'montage')
 %title('eroded')
-
+figure(3)
 subplot(1,2,1),imshow(BW3),title('Eroded');hold  on
 subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 %% Opening
@@ -47,7 +48,7 @@ subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 %imagen erosionada y dilatada con un titulo.
 se = strel('disk',12); %tenÃ­a 7
 BW2 = imopen(f,se);
-figure(2)
+figure(4)
 imshow(BW2)
 title('Opening')
 % Use different disk size
@@ -59,6 +60,7 @@ title('Opening')
 %utilizando SE, despues se  muestra la imagen dilatada y erosionada con un titulo.
 se = strel('disk',15); %tenÃ­a 7 
 BW2 = imclose(f,se);
+figure(5)
 imshow(BW2)
 title('Closing')
 % Use different disk size
@@ -70,6 +72,7 @@ title('Closing')
 %puede ser en 2D como en este caso. 
 se = strel('disk',1);
 BW1 = imdilate(f,se) - imerode(f,se);
+figure(6)
 imshow(BW1), title('Gradient')
 % Use different disk size
 
@@ -79,34 +82,27 @@ imshow(BW1), title('Gradient')
 %Lee una imagen especifica en este caso del directorio de archivos de
 %imagen ya que es .tif y la pasa a figure en matlab.
 I = imread('pout.tif');
+figure(7)
 imshow(I)
 title('Pout image')
-%% MARIELY/SEBAS
-% The background illumination is brighter in the center of the image than at 
-% the bottom. Preprocess the image to make the background illumination more uniform.
-% 
-% As a first step, remove all of the foreground (rice grains) using morphological 
-% opening. The opening operation removes small objects that cannot completely 
-% contain the structuring element. Define a disk-shaped structuring element with 
-% a radius of 15, which fits entirely inside a single grain of rice.
+%% BACKGROUND ILUMINATION
 
-%Define la forma del disco en un radio                                
+%  Preprocesar la imagen para hacer la iluminación de fondo más uniforme.
+%Define la forma del disco en un radio de 15 cm el cual encaja perfectamente en un grano de arroz                               
 se = strel('disk',15)
-%% MARIELY/SEBAS
 
-% To perform the morphological opening, use |imopen| with the structuring element.
+%Abre la imagen de forma morfológica
 
 background = imopen(I,se);
+figure(8)
 imshow(background)
 title('Opening')
-%% MARIELY/SEBAS
-
-% Subtract the background approximation image, |background|, from the original 
-% image, |I|, and view the resulting image. After subtracting the adjusted background 
-% image from the original image, the resulting image has a uniform background 
-% but is now a bit dark for analysis.
+%% BACKGROUND SUBSTRACTION
+% Se sustrae el fondo de la imagen original para un resultado más uniforme
+% pero algo oscuro para su análisis.
 
 I2 = I - background;
+figure(9)
 imshow(I2)
 title('Background')
 %%
@@ -114,6 +110,7 @@ title('Background')
 %Se utiliza la funcion imadjust para aumentar el contraste de nuestra
 %imagen procesada.
 I3 = imadjust(I2)
+figure(10)
 imshow(I3)
 title('Foto ajustada')
 %% 
@@ -129,6 +126,7 @@ title('Foto ajustada')
 % del fondo de la imagen.
 bw = imbinarize(I3);
 bw = bwareaopen(bw,10);
+figure(11)
 imshow(bw)
 title('Binary image')
 
@@ -140,14 +138,18 @@ title('Binary image')
 %Para el caso de Skeletonize se utiliza una imagen en una escala de grises
 %donde el background es negro y el foreground es blanco.
 I = imread('Skeletonize.jpg');
+figure(13)
 imshow(I)
+title('Grayscale')
 %% 
 
 %Para este paso se toma el complemento de la imagen para que los objetos
 %sean claro y el fondo es oscuro. Despues se binariza el resultado. 
 Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
+figure(14)
 imshow(BW)
+title('Binary image')
 %% 
 
 %La funcion bwskel reduce los objetos de la imagen binaria a lineas curvas
@@ -158,14 +160,16 @@ out = bwskel(BW);
 %El esqueleto de color azul se vera reflejado sobre la imagen original
 %usando el filtro labeloverlay. El esqueleto esta sobre el fondo oscuro y
 %tiene un pixel de ancho.
+figure(15)
 imshow(labeloverlay(I,out,'Transparency',0))
-%% Mariely/sebas
-% Prune small spurs that appear on the skeleton and view the result. One short 
-% branch is pruned from a thread near the center of the image.
-
-% 
+title('Width Pixel')
+%% 
+% Remueve pequeños trozos que aparecen en la imagen, se lleva a cabo en un pedazo 
+% pequeño del centro
 out2 = bwskel(BW,'MinBranchLength',15);
+figure(16)
 imshow(labeloverlay(I,out2,'Transparency',0))
+title('Min Branch lenght')
 %Play with the size of Min Branch Lenght
 
 %% The alternative method with bwmorph
@@ -175,22 +179,29 @@ imshow(labeloverlay(I,out2,'Transparency',0))
 %permite eliminar pixeles de los limites de los objetos. Y sigue Inf que es
 %el numero de veces en el que se lleva a cabo en la operacion.
 BW3 = bwmorph(BW,'skel',Inf);
-figure
+figure(17)
 imshow(BW3)
-%% Lets play with the x-ray SEBAS
+title('Bwmorph method')
+%% Lets play with the x-ray
 
 se = strel('disk',7);
 BW3 = f-imopen(f,se);
+figure(18)
 imshow(BW3,[])
 bw = imbinarize(BW3);
+figure(19)
 imshow(bw,[])
 bw = imopen(bw,strel('disk',1));
 bw = imclose(bw,strel('disk',3));
+figure(20)
 imshow(bw,[])
 bw = bwareaopen(bw,50);
+figure(21)
 imshow(bw,[])
 BW3 = bwmorph(bw,'skel',Inf);
+figure(22)
 imshow(BW3)
+figure(23)
 imshow(labeloverlay(f,BW3,'Transparency',0))
 
-% Do the same with your own image S
+% Do the same with your own image 
