@@ -62,7 +62,7 @@ imshow(BW2)
 title('Closing')
 % Use different disk size
 
-%% Gradient SEBAS
+%% Gradient SEBASM
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
 %puede ser en 2D como en este caso. 
