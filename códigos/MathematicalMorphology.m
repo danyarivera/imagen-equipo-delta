@@ -2,8 +2,8 @@
 % codigo clase 18/05/22.
 
 %Lee una imagen especifica de la computadora y la pasa a figure en matlab.
-%Convierte la variable a doble precisión y la funcion imresize cambia el
-%tamaño de la imagen, en este caso escalandola a 0.25, despues se
+%Convierte la variable a doble precisiÃ³n y la funcion imresize cambia el
+%tamaÃ±o de la imagen, en este caso escalandola a 0.25, despues se
 %inicializa la figura mostrando una imagen en una escala de grises y se
 %especifica el rango de visualizacion 
 f=imread('radiograph2.jpg'); 
@@ -30,7 +30,7 @@ title('Dilatation')
 %puede ser en 2D como en este caso. Con la funcion imerode erosiona la
 %imagen en una escala de grises. En este caso se hace un subplot para que
 %muestre la imagen erosionada junto con la imagen de la funcion imopen 
-se = strel('disk',10); %tenía 5
+se = strel('disk',10); %tenÃ­a 5
 BW3 = imerode(f,se);
 %imshow(BW3), title('Eroded')
 % Use different disk size
@@ -43,9 +43,9 @@ subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
 %puede ser en 2D como en este caso. La funcion imopen consiste en una
-%erosión seguida de una dilatación utilizando SE, despues se muestra la
+%erosiÃ³n seguida de una dilataciÃ³n utilizando SE, despues se muestra la
 %imagen erosionada y dilatada con un titulo.
-se = strel('disk',12); %tenía 7
+se = strel('disk',12); %tenÃ­a 7
 BW2 = imopen(f,se);
 figure(2)
 imshow(BW2)
@@ -57,7 +57,7 @@ title('Opening')
 %puede ser en 2D como en este caso. La funcion imclose es lo contrario de
 %imopen ya que consiste en primero la dilatacion seguida de una erosion
 %utilizando SE, despues se  muestra la imagen dilatada y erosionada con un titulo.
-se = strel('disk',15); %tenía 7 
+se = strel('disk',15); %tenÃ­a 7 
 BW2 = imclose(f,se);
 imshow(BW2)
 title('Closing')
@@ -193,4 +193,4 @@ BW3 = bwmorph(bw,'skel',Inf);
 imshow(BW3)
 imshow(labeloverlay(f,BW3,'Transparency',0))
 
-% Do the same with your own image
+% Do the same with your own image S
