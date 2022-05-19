@@ -47,6 +47,7 @@ subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 %imagen erosionada y dilatada con un titulo.
 se = strel('disk',12); %tenía 7
 BW2 = imopen(f,se);
+figure(2)
 imshow(BW2)
 title('Opening')
 % Use different disk size
