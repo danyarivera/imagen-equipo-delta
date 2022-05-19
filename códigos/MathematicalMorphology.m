@@ -64,8 +64,6 @@ title('Closing')
 % Use different disk size
 %HEAD
 
-%% Gradient SEBASM
-
 %% Gradient SEBAS
 
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
@@ -125,13 +123,10 @@ title('Foto ajustada')
 % 
 % I2 = imtophat(I,strel('disk',15));|
 %% 
-% Create a binary version of the processed image so you can use toolbox functions 
-% for analysis. Use the |imbinarize| function to convert the grayscale image into 
-% a binary image. Remove background noise from the image with the |bwareaopen| 
-% function.
 
 % Se utiliza la funcion imbinarize para convertir la figure de una escala
-% de grises a una imagen binaria. La funcion bwareaopen elimina el ruido 
+% de grises a una imagen binaria. La funcion bwareaopen elimina el ruido
+% del fondo de la imagen.
 bw = imbinarize(I3);
 bw = bwareaopen(bw,10);
 imshow(bw)
@@ -140,39 +135,45 @@ title('Binary image')
 % Use different size of the structural element
 
 %% Skeletonize 2-D Grayscale Image
-% Read a 2-D grayscale image into the workspace. Display the image. Objects 
-% of interest are dark threads against a light background.
 
+%Lee una imagen especifica de la computadora y la pasa a figure en matlab.
+%Para el caso de Skeletonize se utiliza una imagen en una escala de grises
+%donde el background es negro y el foreground es blanco.
 I = imread('Skeletonize.jpg');
 imshow(I)
 %% 
-% Skeletonization requires a binary image in which foreground pixels are |1| 
-% (white) and the background is |0| (black). To make the original image suitable 
-% for skeletonization, take the complement of the image so that the objects are 
-% light and the background is dark. Then, binarize the result.
 
+%Para este paso se toma el complemento de la imagen para que los objetos
+%sean claro y el fondo es oscuro. Despues se binariza el resultado. 
 Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
 imshow(BW)
 %% 
-% Perform skeletonization of the binary image using |bwskel|.
 
+%La funcion bwskel reduce los objetos de la imagen binaria a lineas curvas
+%sin cambiar la estructura original de la imagen.
 out = bwskel(BW);
 %% 
-% Display the skeleton over the original image by using the |labeloverlay| function. 
-% The skeleton appears as a 1-pixel wide blue line over the dark threads.
 
+%El esqueleto de color azul se vera reflejado sobre la imagen original
+%usando el filtro labeloverlay. El esqueleto esta sobre el fondo oscuro y
+%tiene un pixel de ancho.
 imshow(labeloverlay(I,out,'Transparency',0))
-%% 
+%% Mariely/sebas
 % Prune small spurs that appear on the skeleton and view the result. One short 
 % branch is pruned from a thread near the center of the image.
 
+% 
 out2 = bwskel(BW,'MinBranchLength',15);
 imshow(labeloverlay(I,out2,'Transparency',0))
 %Play with the size of Min Branch Lenght
 
 %% The alternative method with bwmorph
 
+%La funcion bwmorph se utiliza para aplicar una operacion morfologica
+%especifica en la imagen binaria el cual 'skel' es la operacion el cual
+%permite eliminar pixeles de los limites de los objetos. Y sigue Inf que es
+%el numero de veces en el que se lleva a cabo en la operacion.
 BW3 = bwmorph(BW,'skel',Inf);
 figure
 imshow(BW3)
