@@ -92,7 +92,7 @@ title('Pout image')
 % contain the structuring element. Define a disk-shaped structuring element with 
 % a radius of 15, which fits entirely inside a single grain of rice.
 
-%Define la forma del disco en un radio                                
+%Define la forma del disco en un radio
 se = strel('disk',15)
 %% MARIELY/SEBAS
 
