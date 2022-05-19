@@ -141,12 +141,9 @@ title('Binary image')
 I = imread('Skeletonize.jpg');
 imshow(I)
 %% 
-% Skeletonization requires a binary image in which foreground pixels are |1| 
-% (white) and the background is |0| (black). To make the original image suitable 
-% for skeletonization, take the complement of the image so that the objects are 
-% light and the background is dark. Then, binarize the result.
 
-
+%Para este paso se toma el complemento de la imagen para que los objetos
+%sean claro y el fondo es oscuro. Despues se binariza el resultado. 
 Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
 imshow(BW)
@@ -172,6 +169,10 @@ imshow(labeloverlay(I,out2,'Transparency',0))
 
 %% The alternative method with bwmorph
 
+%La funcion bwmorph se utiliza para aplicar una operacion morfologica
+%especifica en la imagen binaria el cual 'skel' es la operacion el cual
+%permite eliminar pixeles de los limites de los objetos. Y sigue Inf que es
+%el numero de veces en el que se lleva a cabo en la operacion.
 BW3 = bwmorph(BW,'skel',Inf);
 figure
 imshow(BW3)

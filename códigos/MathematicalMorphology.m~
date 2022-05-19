@@ -140,13 +140,13 @@ title('Binary image')
 %donde el background es negro y el foreground es blanco.
 I = imread('Skeletonize.jpg');
 imshow(I)
-%% Mariely/sebas
+%% 
 % Skeletonization requires a binary image in which foreground pixels are |1| 
 % (white) and the background is |0| (black). To make the original image suitable 
 % for skeletonization, take the complement of the image so that the objects are 
 % light and the background is dark. Then, binarize the result.
 
-
+%
 Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
 imshow(BW)
@@ -156,16 +156,16 @@ imshow(BW)
 %sin cambiar la estructura original de la imagen.
 out = bwskel(BW);
 %% 
-% Display the skeleton over the original image by using the |labeloverlay| function. 
-% The skeleton appears as a 1-pixel wide blue line over the dark threads.
 
 %El esqueleto de color azul se vera reflejado sobre la imagen original
-%usando el filtro labeloverlay. El esqueleto esta sobre el fondo 
+%usando el filtro labeloverlay. El esqueleto esta sobre el fondo oscuro y
+%tiene un pixel de ancho.
 imshow(labeloverlay(I,out,'Transparency',0))
-%% 
+%% Mariely/sebas
 % Prune small spurs that appear on the skeleton and view the result. One short 
 % branch is pruned from a thread near the center of the image.
 
+% 
 out2 = bwskel(BW,'MinBranchLength',15);
 imshow(labeloverlay(I,out2,'Transparency',0))
 %Play with the size of Min Branch Lenght
