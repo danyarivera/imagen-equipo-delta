@@ -47,6 +47,7 @@ subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 %imagen erosionada y dilatada con un titulo.
 se = strel('disk',12); %tenía 7
 BW2 = imopen(f,se);
+figure(2)
 imshow(BW2)
 title('Opening')
 % Use different disk size
@@ -106,10 +107,9 @@ I2 = I - background;
 imshow(I2)
 title('Background')
 %%
-% Use |imadjust| to increase the contrast of the processed image |I2| by saturating 
-% 1% of the data at both low and high intensities and by stretching the intensity 
-% values to fill the |uint8| dynamic range.
 
+%Se utiliza la funcion imadjust para aumentar el contraste de nuestra
+%imagen procesada.
 I3 = imadjust(I2)
 imshow(I3)
 title('Foto ajustada')
@@ -125,6 +125,8 @@ title('Foto ajustada')
 % a binary image. Remove background noise from the image with the |bwareaopen| 
 % function.
 
+% Se utiliza la funcion imbinarize para convertir la figure de una escala
+% de grises a una imagen binaria. La funcion bwareaopen elimina el ruido 
 bw = imbinarize(I3);
 bw = bwareaopen(bw,10);
 imshow(bw)
