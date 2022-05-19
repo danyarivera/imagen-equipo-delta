@@ -151,18 +151,21 @@ Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
 imshow(BW)
 %% 
-% Perform skeletonization of the binary image using |bwskel|.
 
+%La funcion bwskel reduce los objetos de la imagen binaria a lineas curvas
+%sin cambiar la estructura original de la imagen.
 out = bwskel(BW);
 %% 
-% Display the skeleton over the original image by using the |labeloverlay| function. 
-% The skeleton appears as a 1-pixel wide blue line over the dark threads.
 
+%El esqueleto de color azul se vera reflejado sobre la imagen original
+%usando el filtro labeloverlay. El esqueleto esta sobre el fondo oscuro y
+%tiene un pixel de ancho.
 imshow(labeloverlay(I,out,'Transparency',0))
 %% 
 % Prune small spurs that appear on the skeleton and view the result. One short 
 % branch is pruned from a thread near the center of the image.
 
+% 
 out2 = bwskel(BW,'MinBranchLength',15);
 imshow(labeloverlay(I,out2,'Transparency',0))
 %Play with the size of Min Branch Lenght
