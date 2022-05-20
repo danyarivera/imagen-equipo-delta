@@ -2,7 +2,7 @@
 % codigo clase 18/05/22.
 
 %Lee una imagen especifica de la computadora y la pasa a figure en matlab.
-%Convierte la variable a doble precisión y la funcion imresize cambia el
+%Convierte la variable a doble precisi�n y la n imresize cambia el
 %tamaño de la imagen, en este caso escalandola a 0.25, despues se
 %inicializa la figura mostrando una imagen en una escala de grises y se
 %especifica el rango de visualizacion 
@@ -185,6 +185,9 @@ title('Bwmorph method')
 %% Lets play with the x-ray
 
 se = strel('disk',7);
+BW3 = bwmorph(bw,'skel',Inf);
+imshow(BW3)
+imshow(labeloverlay(f,BW3,'Transparency',0))
 BW3 = f-imopen(f,se);
 figure(18)
 imshow(BW3,[])
@@ -198,10 +201,14 @@ imshow(bw,[])
 bw = bwareaopen(bw,50);
 figure(21)
 imshow(bw,[])
+<<<<<<< HEAD
+
+=======
 BW3 = bwmorph(bw,'skel',Inf);
 figure(22)
 imshow(BW3)
 figure(23)
 imshow(labeloverlay(f,BW3,'Transparency',0))
+>>>>>>> e9a81d8913b8aefbb8828c59665642c56dc285c9
 
 % Do the same with your own image 
