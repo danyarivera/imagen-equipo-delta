@@ -177,6 +177,9 @@ imshow(BW3)
 %% Lets play with the x-ray SEBAS
 
 se = strel('disk',7);
+BW3 = bwmorph(bw,'skel',Inf);
+imshow(BW3)
+imshow(labeloverlay(f,BW3,'Transparency',0))
 BW3 = f-imopen(f,se);
 imshow(BW3,[])
 bw = imbinarize(BW3);
@@ -186,8 +189,6 @@ bw = imclose(bw,strel('disk',3));
 imshow(bw,[])
 bw = bwareaopen(bw,50);
 imshow(bw,[])
-BW3 = bwmorph(bw,'skel',Inf);
-imshow(BW3)
-imshow(labeloverlay(f,BW3,'Transparency',0))
+
 
 % Do the same with your own image
