@@ -208,4 +208,4 @@ figure(23)
 imshow(labeloverlay(f,BW3,'Transparency',0))
 
 
-% Do the same with your own image 
+% Do the same with your own image
