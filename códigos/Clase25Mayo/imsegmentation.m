@@ -1,4 +1,4 @@
-f=imread('radiograph1.jpg');
+f=imread('radiograph2.jpg');
 f=double(f(:,:,1));
 f=f/max(max(f));
 f=imresize(f,0.15);
