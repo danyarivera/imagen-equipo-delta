@@ -18,14 +18,14 @@ title('Original')
 % grises porsteriormente para multiplicar el resultado por la imagen
 % original.
 seg1 = f > 0.5;
+%imshow(seg1,[]);
 figure(2)
-imshow(seg1,[])
 subplot(2,2,1)
 imshow(seg1.*f,[])
 title('Threshold>0.5')
 hold on
 seg2 = f < 0.75;
-imshow(seg2,[]);
+%imshow(seg2,[]);
 subplot(2,2,2)
 imshow(seg2.*f,[])
 title('Threshold <0.75')
@@ -37,7 +37,7 @@ hold on
 % ya que es donde se ven valores más altos en el histograma, en la escala 
 % de grises estos valores se encuentran en la parte más oscura (negro)
 seg3 = f < 0.1; % 
-imshow(seg3,[]);
+%imshow(seg3,[]);
 subplot(2,2,3)
 imshow(seg3.*f,[])
 title('Threshold <0.1')
@@ -117,7 +117,7 @@ title('Kmeans Segmentation 5')
 % a simple vista.
 
 
-%% Watershed segmentation
+%% Watershed segmentation Canny
 
 edgeC = edge(f,'Canny');
 D = bwdist(edgeC);
@@ -135,14 +135,34 @@ L(edgeC) = 0;
 rgb = label2rgb(L,'jet',[.5 .5 .5]);
 figure(6)
 imshow(rgb)
-title('Watershed Transform')
+title('Watershed Transform Canny')
 
 % provide an alterante segmentation based on a different edge detector
+
+%% Watershed segmentation Sobel
+
+edgeC = edge(f,'Sobel');
+D = bwdist(edgeC);
+figure(7)
+imshow(D,[]);
+title('Distance Transform of Binary Image (Sobel)')
+hold on
+L = watershed(D);
+edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));
+imshow(f+edgemap,[0,1]);
+L(edgeC) = 0;
+%% 
+% Display the resulting label matrix as an RGB image.
+
+rgb = label2rgb(L,'jet',[.5 .5 .5]);
+figure(8)
+imshow(rgb)
+title('Watershed Transform Sobel')
 
 %% SOBEL METHOD & CANNY METHOD edge detector
 
 edgeC = edge(f,'sobel');
-figure(7)
+figure(9)
 subplot(1,2,1)
 imshow(edgeC,[])
 title('Sobel Method')
