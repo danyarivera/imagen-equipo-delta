@@ -1,7 +1,7 @@
 %% Equipo 3
 %% Integrantes: Mariely Charles/
 %%              Ariana Fragoso/
-%%              Danya Rivera/
+%%              Danya Rivadeneira/
 %%              Sebastián Mencías
 %% Fecha 24/05/2022
 
@@ -18,7 +18,7 @@ title('Original')
 % grises porsteriormente para multiplicar el resultado por la imagen
 % original.
 seg1 = f > 0.5;
-figure()
+figure(2)
 imshow(seg1,[])
 subplot(2,2,1)
 imshow(seg1.*f,[])
@@ -54,7 +54,7 @@ title('Histograma')
 
 thr = graythresh(f);
 seg1 = f > thr;
-figure()
+figure(3)
 subplot(1,2,1)
 imshow(seg1,[])
 title('Threshold')
@@ -64,7 +64,7 @@ edgemap = abs(conv2(seg1,dxp,'same'))+abs(conv2(seg1,dyp,'same'));
 subplot(1,2,2)
 imshow(f+edgemap,[0,1]);
 title('Otsu Method')
-
+hold on
 
 % Compare the otsu provided threshold vs the one you selected in the
 % preview step.
@@ -78,37 +78,37 @@ title('Otsu Method')
 [L,Centers] = imsegkmeans(int8(255*f),3); %Vuelve los valores a enteros y 
 % se señala la cantidad de centros, en este caso 3
 B = labeloverlay(f,L);
-figure()
-subplot(1,2,1)
-imshow(B)
-title("Labeled Image")
-hold on
+%figure(4)
+% subplot(1,2,1)
+%imshow(B)
+% title("Labeled Image")
 imshow(int8(255*f)<Centers(1),[]);
 imshow(int8(255*f)<Centers(2),[]);
 imshow(int8(255*f)>Centers(3),[]);
 edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));
-subplot(1,2,2)
+figure(4)
+subplot(1,2,1)
 imshow(f+edgemap,[0,1])
-title('Kmeans Segmentation 3 Centers')
-
+title('Kmeans Segmentation 3')
+hold on
 
 % Do the same procedure but now with 5 centers.
 [L,Centers] = imsegkmeans(int8(255*f),5);
-B = labeloverlay(f,L);
-figure()
-subplot(1,2,1)
-imshow(B)
-title("Labeled Image")
-hold on
+%B = labeloverlay(f,L);
+% subplot(1,2,1)
+% imshow(B)
+% title("Labeled Image")
 imshow(int8(255*f)<Centers(1),[]);
 imshow(int8(255*f)<Centers(2),[]);
 imshow(int8(255*f)>Centers(3),[]);
 imshow(int8(255*f)>Centers(4),[]);
 imshow(int8(255*f)>Centers(5),[]);
 edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));
+hold on
+figure(4)
 subplot(1,2,2)
 imshow(f+edgemap,[0,1]);
-title('Kmeans Segmentation 5 Centers')
+title('Kmeans Segmentation 5')
 
 % Is the segmentation better?
 %En este caso la segmentación de 3 centros es mejor, segmenta materia 
@@ -121,8 +121,9 @@ title('Kmeans Segmentation 5 Centers')
 
 edgeC = edge(f,'Canny');
 D = bwdist(edgeC);
+figure(5)
 imshow(D,[]);
-title('Distance Transform of Binary Image')
+title('Distance Transform of Binary Image (Canny)')
 hold on
 L = watershed(D);
 edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));
@@ -132,7 +133,7 @@ L(edgeC) = 0;
 % Display the resulting label matrix as an RGB image.
 
 rgb = label2rgb(L,'jet',[.5 .5 .5]);
-figure()
+figure(6)
 imshow(rgb)
 title('Watershed Transform')
 
@@ -141,7 +142,7 @@ title('Watershed Transform')
 %% SOBEL METHOD & CANNY METHOD edge detector
 
 edgeC = edge(f,'sobel');
-figure()
+figure(7)
 subplot(1,2,1)
 imshow(edgeC,[])
 title('Sobel Method')
