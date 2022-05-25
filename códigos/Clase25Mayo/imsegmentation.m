@@ -1,7 +1,7 @@
 %% Equipo 3
 %% Integrantes: Mariely Charles/
 %%              Ariana Fragoso/
-%%              Danya Rivadeneira/
+%%              Danya Rivera/
 %%              Sebastián Mencías
 %% Fecha 24/05/2022
 
