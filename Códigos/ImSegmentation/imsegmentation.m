@@ -1,7 +1,7 @@
 %% Equipo 3
-%% Integrantes: Mariely Charles/
-%%              Ariana Fragoso/
-%%              Danya Rivadeneira/
+%% Integrantes: Mariely Charles
+%%              Ariana Fragoso
+%%              Danya Rivera
 %%              Sebastián Mencías
 %% Fecha 24/05/2022
 
@@ -13,7 +13,7 @@ figure(1)
 imshow(f,[]);
 title('Original')
 %% Thresholding
-%Muesra la segentación de la imagen en valores mayores a 0.5, 0,75 y 
+% Muesra la segmentación de la imagen en valores mayores a 0.5, 0,75 y 
 % menores a 0.80 respectivamente en base a los valores en la escala de
 % grises porsteriormente para multiplicar el resultado por la imagen
 % original.
@@ -49,8 +49,8 @@ title('Histograma')
 
 %% 
 %% Otsu method
-%calcula un umbral total de la imagen en escala de grises mediante el
-%método OTSU 
+% Calcula un umbral total de la imagen en escala de grises mediante el
+% método OTSU 
 
 thr = graythresh(f);
 seg1 = f > thr;
@@ -111,9 +111,9 @@ imshow(f+edgemap,[0,1]);
 title('Kmeans Segmentation 5')
 
 % Is the segmentation better?
-%En este caso la segmentación de 3 centros es mejor, segmenta materia 
+% En este caso la segmentación de 3 centros es mejor, segmenta materia 
 % blanca,gris y el fondo,en cambio la de 5 centros segmenta más partes de 
-% la imagen haciendo más dificil diferenciar lo que se está segmentando
+% la imagen haciendo más difícil diferenciar lo que se está segmentando
 % a simple vista.
 
 
