@@ -54,11 +54,11 @@ imshow(BW2)
 title('Opening')
 % Use different disk size
 %% Closing
-
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
-%puede ser en 2D como en este caso. La funcion imclose es lo contrario de
-%imopen ya que consiste en primero la dilatacion seguida de una erosion
-%utilizando SE, despues se  muestra la imagen dilatada y erosionada con un titulo.
+%puede ser en 2D como en este caso. La función imclose es lo contrario de
+%imopen ya que consiste en primero la dilatación seguida de una erosion
+%utilizando SE, despues se  muestra la imagen dilatada y erosionada con un título.
+
 se = strel('disk',15); %tenÃ­a 7 
 BW2 = imclose(f,se);
 figure(5)
@@ -68,9 +68,9 @@ title('Closing')
 %HEAD
 
 %% Gradient SEBAS
-
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
-%puede ser en 2D como en este caso. 
+%puede ser en 2D como en este caso.
+
 se = strel('disk',1);
 BW1 = imdilate(f,se) - imerode(f,se);
 figure(6)
@@ -79,17 +79,17 @@ imshow(BW1), title('Gradient')
 
 %% Preprocess the Image The Rice Matlab Example
 % Read an image into the workspace.
-
-%Lee una imagen especifica en este caso del directorio de archivos de
+%Lee una imagen específica en este caso del directorio de archivos de
 %imagen ya que es .tif y la pasa a figure en matlab.
+
 I = imread('pout.tif');
 figure(7)
 imshow(I)
 title('Pout image')
 %% BACKGROUND ILUMINATION
-
 %  Preprocesar la imagen para hacer la iluminación de fondo más uniforme.
-%Define la forma del disco en un radio de 15 cm el cual encaja perfectamente en un grano de arroz                               
+%Define la forma del disco en un radio de 15 cm el cual encaja perfectamente en un grano de arroz     
+
 se = strel('disk',15)
 
 %Abre la imagen de forma morfológica
@@ -107,9 +107,9 @@ figure(9)
 imshow(I2)
 title('Background')
 %%
-
-%Se utiliza la funcion imadjust para aumentar el contraste de nuestra
+%Se utiliza la función imadjust para aumentar el contraste de nuestra
 %imagen procesada.
+
 I3 = imadjust(I2)
 figure(10)
 imshow(I3)
@@ -121,10 +121,10 @@ title('Foto ajustada')
 % 
 % I2 = imtophat(I,strel('disk',15));|
 %% 
-
-% Se utiliza la funcion imbinarize para convertir la figure de una escala
+% Se utiliza la función imbinarize para convertir la figure de una escala
 % de grises a una imagen binaria. La funcion bwareaopen elimina el ruido
 % del fondo de la imagen.
+
 bw = imbinarize(I3);
 bw = bwareaopen(bw,10);
 figure(11)
@@ -134,33 +134,33 @@ title('Binary image')
 % Use different size of the structural element
 
 %% Skeletonize 2-D Grayscale Image
-
-%Lee una imagen especifica de la computadora y la pasa a figure en matlab.
+%Lee una imagen específica de la computadora y la pasa a figure en matlab.
 %Para el caso de Skeletonize se utiliza una imagen en una escala de grises
 %donde el background es negro y el foreground es blanco.
+
 I = imread('Skeletonize.jpg');
 figure(13)
 imshow(I)
 title('Grayscale')
 %% 
-
 %Para este paso se toma el complemento de la imagen para que los objetos
-%sean claro y el fondo es oscuro. Despues se binariza el resultado. 
+%sean claro y el fondo es oscuro. Después se binariza el resultado. 
+
 Icomplement = imcomplement(I);
 BW = imbinarize(Icomplement);
 figure(14)
 imshow(BW)
 title('Binary image')
 %% 
-
-%La funcion bwskel reduce los objetos de la imagen binaria a lineas curvas
+%La función bwskel reduce los objetos de la imagen binaria a lineas curvas
 %sin cambiar la estructura original de la imagen.
+
 out = bwskel(BW);
 %% 
-
 %El esqueleto de color azul se vera reflejado sobre la imagen original
 %usando el filtro labeloverlay. El esqueleto esta sobre el fondo oscuro y
 %tiene un pixel de ancho.
+
 figure(15)
 imshow(labeloverlay(I,out,'Transparency',0))
 title('Width Pixel')
@@ -174,11 +174,11 @@ title('Min Branch lenght')
 %Play with the size of Min Branch Lenght
 
 %% The alternative method with bwmorph
+%La funcion bwmorph se utiliza para aplicar una operación morfológica
+%especifica en la imagen binaria el cual 'skel' es la operación el cual
+%permite eliminar pixeles de los límites de los objetos. Y sigue Inf que es
+%el número de veces en el que se lleva a cabo en la operación.
 
-%La funcion bwmorph se utiliza para aplicar una operacion morfologica
-%especifica en la imagen binaria el cual 'skel' es la operacion el cual
-%permite eliminar pixeles de los limites de los objetos. Y sigue Inf que es
-%el numero de veces en el que se lleva a cabo en la operacion.
 BW3 = bwmorph(BW,'skel',Inf);
 figure(17)
 imshow(BW3)
