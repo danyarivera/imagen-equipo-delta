@@ -15,11 +15,11 @@ figure(1)
 imshow(f,[]);
 title('Radiograph') 
 %% Dilatation
-
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
-%puede ser en 2D como en este caso. Con la funcion imdilate dilata la
+%puede ser en 2D como en este caso. Con la función imdilate dilata la
 %imagen en una escala de grises, se puede ver menos visible la imagen
 %conforme subas el SE.
+
 se = strel('disk',8); 
 BW2 = imdilate(f,se);
 figure(2)
