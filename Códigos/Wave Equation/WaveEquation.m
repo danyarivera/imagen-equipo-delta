@@ -3,7 +3,7 @@ m = 1;
 c = 1;
 a = 0;
 f = 0;
-numberOfPDE=1;
+numberOfPDE = 1;
 model = createpde(numberOfPDE);
 geometryFromEdges(model,@squareg);
 pdegplot(model,'EdgeLabels','on');
@@ -22,14 +22,14 @@ ylim([-1.1 1.1]);
 axis equal
 xlabel x
 ylabel y
-u0=@(location) atan(cos((pi*location.x/2)));
-ut0=@(location) 3*sin(pi*location.x).*exp(sin((pi*location.y/2)));
+u0 = @(location) atan(cos((pi*location.x/2)));
+ut0 = @(location) 3*sin(pi*location.x).*exp(sin((pi*location.y/2)));
 setInitialConditions(model,u0,ut0);
-n=31;
-tlist= linspace(0,5,n);
+n = 31;
+tlist = linspace(0,5,n);
 model.SolverOptions.ReportStatistics = 'on';
 result = solvepde(model,tlist);
-u= result.NodalSolution;
+u = result.NodalSolution;
 figure
 umax = max(max(u));
 umin = min(min(u));
