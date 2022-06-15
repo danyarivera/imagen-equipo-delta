@@ -1,21 +1,21 @@
-f=imread('radiograph1.jpg'); %Lee una imagen específica de la computadora y la pasa a figure en matlab
-f=imresize(f,0.25); %El imresize cambia el tamaño de la imagen, en este caso escalándola a 0.25
+f=imread('radiograph1.jpg'); %Lee una imagen especifica de la computadora y la pasa a figure en matlab
+f=imresize(f,0.25); %El imresize cambia el tama�o de la imagen, en este caso escalandola a 0.25
 f=double(f(:,:,1)); %
-imshow(f,[]) % Muestra la imagen en una escala de grises y se específica el rango de visualización
+imshow(f,[]) % Muestra la imagen en una escala de grises y se especifica el rango de visualizacion
 
 %%
 edgex=[1,-1] %Crea un arreglo del borde x
-g1=conv2(f,edgex,'same'); %Devuelve una sección de la convolución, en este caso el centro. (Borde X)
-imshow(g1,[-10,10]); % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la conv2.
+g1=conv2(f,edgex,'same'); %Devuelve una seccion de la convolucion, en este caso el centro. (Borde X)
+imshow(g1,[-10,10]); % Muestra una imagen en escala de grises con rango de visualizacion de -10 a 10 de la conv2.
 %%
 edgey=[-1 -2 -1;0,0,0;1,2,1]/8 % Crea un areglo del borde y
-g2=conv2(f,edgey,'same'); % Devuelve una sección de la convolución, en este caso del centro (Borde y)
-imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+g2=conv2(f,edgey,'same'); % Devuelve una seccion de la convolucion, en este caso del centro (Borde y)
+imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualizacion de -10 a 10 de la convolucion central.
 figure(2)
 subplot(1,2,1)
-imshow(g1,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+imshow(g1,[-10,10])  % Muestra una imagen en escala de grises con rango de visualizacion de -10 a 10 de la convolucion central.
 subplot(1,2,2)
-imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualización de -10 a 10 de la convolución central.
+imshow(g2,[-10,10])  % Muestra una imagen en escala de grises con rango de visualizacion de -10 a 10 de la convolucion central.
 
 edgex=[1,-1]
 g1=conv2(f,edgex,'same');
