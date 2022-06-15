@@ -1,7 +1,8 @@
-m=1;
-c=1;
-a=0;
-f=0;
+%Wave Equation
+m = 1;
+c = 1;
+a = 0;
+f = 0;
 numberOfPDE=1;
 model = createpde(numberOfPDE);
 geometryFromEdges(model,@squareg);
