@@ -11,7 +11,8 @@ response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...
    'SampleRate',RangeDopplerEx_MF_Fs,'DopplerOutput','Speed', ...
    'OperatingFrequency',RangeDopplerEx_MF_Fc);
 
-% Calculate the range-Doppler response.
+% Calculate the range-Doppler response.Calucular la respuesta del
+% range-doppler
 [resp,rng_grid,dop_grid] = response(RangeDopplerEx_MF_X, ...
     RangeDopplerEx_MF_Coeff);
 
