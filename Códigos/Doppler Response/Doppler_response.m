@@ -3,7 +3,7 @@
 %%% Pulse radar systems
 
 %% Range Doppler response using matched filter
-load RangeDopplerExampleData;
+load RangeDopplerExampleData; 
 
 % Create a range-Doppler response object
 response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...
@@ -16,13 +16,13 @@ response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...
     RangeDopplerEx_MF_Coeff);
 
 % Plot the range-Doppler response.
-figure(1)
+figure(1) %la figura 1 plotea la respuesta de range-doppler
 imagesc(dop_grid,rng_grid,mag2db(abs(resp)));
 xlabel('Speed (m/s)');
 ylabel('Range (m)');
 title('Range-Doppler Map');
 
-%% Estimate Doppler and range from range-Doppler response. Estimar doppler y range en la respuesta de range-doppler
+%% Estimate Doppler and range from range-Doppler response. 
 
 % Create a range-Doppler response object.
 hrdresp = phased.RangeDopplerResponse(...
