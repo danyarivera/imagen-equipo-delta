@@ -36,7 +36,9 @@ hrdresp = phased.RangeDopplerResponse(...
 [resp,rng_grid,dop_grid] = step(hrdresp,...
    RangeDopplerEx_Dechirp_X,RangeDopplerEx_Dechirp_Xref);
 
-% Estimate the range and Doppler by finding the location of the maximum response.
+% Estimate the range and Doppler by finding the location of the maximum
+% response. estimar el range y doppler encontrando la ubicacion de la
+% repsuesta maxima
 [x_temp,idx_temp] = max(abs(resp));
 [~,dop_idx] = max(x_temp);
 rng_idx = idx_temp(dop_idx);
