@@ -1,4 +1,4 @@
-%Create Gray-Level Co-occurrence Matrix for Grayscale Image
+%%Create Gray-Level Co-occurrence Matrix for Grayscale Image
 I0 = imread('dog.jpeg');
 I = rgb2gray(I0);
 imshow(I)
@@ -27,11 +27,11 @@ imshow(rescale(SI))
 
 %extractLBPFeatures
 gato = imread('gato.jpg');
-gatobw=rgb2gray(gato)
+gatobw = rgb2gray(gato)
 rotatedcat = imread('rotatedcat.jpg');
-rotatedcatbw=rgb2gray(rotatedcat)
+rotatedcatbw = rgb2gray(rotatedcat)
 chess = imread('chess.png');
-chessbw=rgb2gray(chess)
+chessbw = rgb2gray(chess)
 figure
 imshow(gatobw)
 title('cat')

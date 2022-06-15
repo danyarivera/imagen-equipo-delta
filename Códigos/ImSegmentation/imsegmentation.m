@@ -18,6 +18,7 @@ title('Original')
 % grises porsteriormente para multiplicar el resultado por la imagen
 % original.
 seg1 = f > 0.5;
+
 %imshow(seg1,[]);
 figure(2)
 subplot(2,2,1)
@@ -25,6 +26,7 @@ imshow(seg1.*f,[])
 title('Threshold>0.5')
 hold on
 seg2 = f < 0.75;
+
 %imshow(seg2,[]);
 subplot(2,2,2)
 imshow(seg2.*f,[])
@@ -37,17 +39,18 @@ hold on
 % ya que es donde se ven valores más altos en el histograma, en la escala 
 % de grises estos valores se encuentran en la parte más oscura (negro)
 seg3 = f < 0.1; % 
+
 %imshow(seg3,[]);
 subplot(2,2,3)
 imshow(seg3.*f,[])
 title('Threshold <0.1')
+
 %Muestra un histograma en relación a una escala de grises 
 hold on
 subplot(2,2,4)
 imhist(f) 
 title('Histograma')
 
-%% 
 %% Otsu method
 % Calcula un umbral total de la imagen en escala de grises mediante el
 % método OTSU 
@@ -78,9 +81,11 @@ hold on
 [L,Centers] = imsegkmeans(int8(255*f),3); %Vuelve los valores a enteros y 
 % se señala la cantidad de centros, en este caso 3
 B = labeloverlay(f,L);
+
 %figure(4)
 % subplot(1,2,1)
 %imshow(B)
+
 % title("Labeled Image")
 imshow(int8(255*f)<Centers(1),[]);
 imshow(int8(255*f)<Centers(2),[]);
@@ -151,6 +156,7 @@ L = watershed(D);
 edgemap = abs(conv2(L,dxp,'same'))+abs(conv2(L,dyp,'same'));
 imshow(f+edgemap,[0,1]);
 L(edgeC) = 0;
+
 %% 
 % Display the resulting label matrix as an RGB image.
 
