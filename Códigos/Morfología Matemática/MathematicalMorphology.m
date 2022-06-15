@@ -27,11 +27,11 @@ imshow(BW2)
 title('Dilatation')
 % Use different disk size
 %% Erosion
-
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
-%puede ser en 2D como en este caso. Con la funcion imerode erosiona la
+%puede ser en 2D como en este caso. Con la función imerode erosiona la
 %imagen en una escala de grises. En este caso se hace un subplot para que
-%muestre la imagen erosionada junto con la imagen de la funcion imopen 
+%muestre la imagen erosionada junto con la imagen de la función imopen
+
 se = strel('disk',10); %tenÃ­a 5
 BW3 = imerode(f,se);
 %imshow(BW3), title('Eroded')
@@ -42,12 +42,12 @@ figure(3)
 subplot(1,2,1),imshow(BW3),title('Eroded');hold  on
 subplot(1,2,2),imshowpair(BW2,BW3,'montage'),title('Montage');hold off
 %% Opening
-
 %El strel crea un elemento estructurante (SE) el cual asume valores binarios y
-%puede ser en 2D como en este caso. La funcion imopen consiste en una
-%erosiÃ³n seguida de una dilataciÃ³n utilizando SE, despues se muestra la
-%imagen erosionada y dilatada con un titulo.
-se = strel('disk',12); %tenÃ­a 7
+%puede ser en 2D como en este caso. La función imopen consiste en una
+%erosiÃ³n seguida de una dilatación utilizando SE, despues se muestra la
+%imagen erosionada y dilatada con un título.
+
+se = strel('disk',12);
 BW2 = imopen(f,se);
 figure(4)
 imshow(BW2)
