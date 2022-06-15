@@ -1,11 +1,12 @@
 %% Mathematical Morphology
-% codigo clase 18/05/22.
+% código clase 18/05/22.
 
 %Lee una imagen especifica de la computadora y la pasa a figure en matlab.
 %Convierte la variable a doble precisión y la función imresize cambia el
-%tamaÃ±o de la imagen, en este caso escalandola a 0.25, despues se
+%tamaño de la imagen, en este caso escalándola a 0.25, después se
 %inicializa la figura mostrando una imagen en una escala de grises y se
-%especifica el rango de visualizacion 
+%especifica el rango de visualización
+
 f=imread('radiograph2.jpg'); 
 f=double(f(:,:,1)); 
 f=f/max(max(f));
