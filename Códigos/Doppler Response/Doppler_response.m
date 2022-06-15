@@ -11,8 +11,7 @@ response = phased.RangeDopplerResponse('DopplerFFTLengthSource','Property', ...
    'SampleRate',RangeDopplerEx_MF_Fs,'DopplerOutput','Speed', ...
    'OperatingFrequency',RangeDopplerEx_MF_Fc);
 
-% Calculate the range-Doppler response.Calucular la respuesta del
-% range-doppler
+% Calculate the range-Doppler response.
 [resp,rng_grid,dop_grid] = response(RangeDopplerEx_MF_X, ...
     RangeDopplerEx_MF_Coeff);
 
@@ -23,7 +22,7 @@ xlabel('Speed (m/s)');
 ylabel('Range (m)');
 title('Range-Doppler Map');
 
-%% Estimate Doppler and range from range-Doppler response.
+%% Estimate Doppler and range from range-Doppler response. Estimar doppler y range en la respuesta de range-doppler
 
 % Create a range-Doppler response object.
 hrdresp = phased.RangeDopplerResponse(...
