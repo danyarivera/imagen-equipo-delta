@@ -1,4 +1,4 @@
-%%Create Gray-Level Co-occurrence Matrix for Grayscale Image
+%%Create Gray-Level Co-occurrence Matrix for Grayscale Image %
 I0 = imread('dog.jpeg');
 I = rgb2gray(I0);
 imshow(I)
